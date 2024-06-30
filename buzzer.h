@@ -2,8 +2,11 @@
 #define BUZZER_H
 #include "framework.h"
 
-#define TONE_1KHZ   11059
-#define TONE_ALERT  65534  //169hz
+//该频率定义是数字为
+//该周期在Tone_Freq[]数组中的顺序位置
+//TONE_1KHZ的周期在Tone_Freq[41]内，为11059
+#define TONE_1KHZ   41  //11059us
+#define TONE_ALERT  42  //169hz
 
 void Buzzer_Init();
 void Buzzer_Beep();
@@ -15,22 +18,54 @@ void Refresh_Buzzer_Hook();
 //当设置Buzzer_Is_Alert=1时警报打开
 extern uchar Buzzer_Is_Alert;
 
+extern uint code Tone_Freq[];
+
 void Buzzer_Alert();
 
-//音符周期(us) = 1khz周期*1000/音符频率
-#define DO      21145
-#define DO_S    19962
-#define RE      18840
-#define RE_S    17780
-#define MI      16781
-#define FA      15844
-#define FA_S    14945
-#define SO      14106
-#define SO_S    13308
-#define LA      12567
-#define LA_S    11866
-#define SI      11193
 
-#define TONE_TEST 65534
+//宏定义，音调唱名转换为
+//该音调的周期在Tone_Freq[]数组中的顺序位置
+//这样用来编谱只需要uchar类型保存顺序，减少储存占用
+
+//中音谱
+#define DO      0  //1
+#define DOS     1  //1#
+#define RE      2  //2
+#define RES     3  //2#
+#define MI      4
+#define FA      5
+#define FAS     6
+#define SO      7
+#define SOS     8
+#define LA      9
+#define LAS     10
+#define SI      11
+//低音谱
+#define _DO     12
+#define _DOS    13
+#define _RE     14
+#define _RES    15
+#define _MI     16
+#define _FA     17
+#define _FAS    18
+#define _SO     19
+#define _SOS    20
+#define _LA     21
+#define _LAS    22
+#define _SI     23
+//高音谱
+#define DO_     24
+#define DOS_    25
+#define RE_     26
+#define RES_    27
+#define MI_     28
+#define FA_     29
+#define FAS_    30
+#define SO_     31
+#define SOS_    32
+#define LA_     33
+#define LAS_    34
+#define SI_     35
+
 
 #endif

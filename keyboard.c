@@ -128,7 +128,24 @@ void Test_Key(){
         Buzzer_noBeep();
     }
 
+    KEY_DOWN(KEY_8){
+        Buzzer_Tone(_RE);
+    }
+    KEY_UP(KEY_8){
+        Buzzer_noBeep();
+    }
+
     KEY_DOWN(KEY_12){
         Buzzer_Is_Alert=1;
+    }
+    KEY_DOWN(KEY_10){
+        Buzzer_Is_Bingo=1;
+    }
+
+    KEY_DOWN(KEY_9){
+        Buzzer_Player_Play(&Muisc_Gameover);
+    }
+    KEY_DOWN(KEY_11){
+        Buzzer_Player_Stop();
     }
 }

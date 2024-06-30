@@ -11,21 +11,36 @@
 void Buzzer_Init();
 void Buzzer_Beep();
 void Buzzer_noBeep();
-void Buzzer_Tone(long int tone);
+void Buzzer_Tone(uchar tone);
 void Refresh_Buzzer_Hook();
+void Buzzer_Player_Hook();
 
 //蜂鸣器警告声的开关
 //当设置Buzzer_Is_Alert=1时警报打开
 extern uchar Buzzer_Is_Alert;
 
+extern uchar Buzzer_Is_Bingo;
+
 extern uint code Tone_Freq[];
 
+//播放地址索引
+extern long int Player_Ps;
+//当前播放音符列表索引
+extern uchar *Player_Note_List;
+extern uchar Player_State;
+
+extern uchar code Muisc_Gameover[];
+
 void Buzzer_Alert();
+void Buzzer_Bingo();
+void Buzzer_Player_Play(uchar *note_list);
+void Buzzer_Player_Stop();
 
 
 //宏定义，音调唱名转换为
 //该音调的周期在Tone_Freq[]数组中的顺序位置
 //这样用来编谱只需要uchar类型保存顺序，减少储存占用
+//唱名+S 代表升半阶音节
 
 //中音谱
 #define DO      0  //1
@@ -66,6 +81,11 @@ void Buzzer_Alert();
 #define LA_     33
 #define LAS_    34
 #define SI_     35
+//静音音符
+#define MUTE    36
+#define FINISH  254
 
+#define PLAYER_PALY     1
+#define PLAYER_STOP     2
 
 #endif

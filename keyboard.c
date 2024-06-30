@@ -127,4 +127,8 @@ void Test_Key(){
     KEY_UP(KEY_16){
         Buzzer_noBeep();
     }
+
+    KEY_DOWN(KEY_12){
+        Buzzer_Is_Alert=1;
+    }
 }

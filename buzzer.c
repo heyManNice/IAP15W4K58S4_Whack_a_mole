@@ -42,3 +42,27 @@ void Buzzer_Tone(long int tone){
     PWMCR = 0x84;
     P_SW2 &= ~0x80;
 }
+
+uchar Buzzer_Is_Alert = 0;
+
+//刷新蜂鸣器状态的函数
+//该函数每10ms执行一次
+void Refresh_Buzzer_Hook(){
+    if(Buzzer_Is_Alert)Buzzer_Alert();
+}
+
+//如果Buzzer_Is_Alert=1就会执行此函数
+//此函数执行的频率由Refresh_Buzzer_Hook决定
+void Buzzer_Alert(){
+    static uchar i =0;
+    if(i==0)Buzzer_Tone(TONE_ALERT);
+    if(i==10)Buzzer_noBeep();
+    if(i==20)Buzzer_Tone(TONE_ALERT);
+    if(i==30){
+        Buzzer_noBeep();
+        i=0;
+        Buzzer_Is_Alert=0;
+        return;
+    }
+    i++;
+}

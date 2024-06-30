@@ -31,10 +31,10 @@ void System_Timer_0_Init() {
 }
 
 //系统定时器0执行的中断函数
-//每隔一秒钟就给Uptime_Seconds加1
-//用来表示系统运行的秒数
-//后面增加了在不同的时间周期内
-//给Loop_Time赋值标记当前周期的功能
+//每隔一毫秒就给Uptime_Seconds加1
+//用来表示系统运行的毫秒数
+//为给Loop_Time赋值标记当前周期的功能
+//Loop_Time可能的取值请看framework.h
 void System_Timer_0() interrupt 1 {
     static uint i=0;
     i++;

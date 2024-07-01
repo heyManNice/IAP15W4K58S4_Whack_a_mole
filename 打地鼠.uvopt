@@ -175,8 +175,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\framework.c</PathWithFileName>
-      <FilenameWithoutPath>framework.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\buzzer.c</PathWithFileName>
+      <FilenameWithoutPath>buzzer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -187,8 +187,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\task.c</PathWithFileName>
-      <FilenameWithoutPath>task.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\display.c</PathWithFileName>
+      <FilenameWithoutPath>display.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -199,8 +199,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\display.c</PathWithFileName>
-      <FilenameWithoutPath>display.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\framework.c</PathWithFileName>
+      <FilenameWithoutPath>framework.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -211,8 +211,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\keyboard.c</PathWithFileName>
-      <FilenameWithoutPath>keyboard.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\game.c</PathWithFileName>
+      <FilenameWithoutPath>game.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -223,8 +223,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\buzzer.c</PathWithFileName>
-      <FilenameWithoutPath>buzzer.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\keyboard.c</PathWithFileName>
+      <FilenameWithoutPath>keyboard.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -235,7 +235,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\random.c</PathWithFileName>
+      <PathWithFileName>.\src\random.c</PathWithFileName>
       <FilenameWithoutPath>random.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -247,8 +247,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\game.c</PathWithFileName>
-      <FilenameWithoutPath>game.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\task.c</PathWithFileName>
+      <FilenameWithoutPath>task.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -267,8 +267,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\framework.h</PathWithFileName>
-      <FilenameWithoutPath>framework.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\buzzer.h</PathWithFileName>
+      <FilenameWithoutPath>buzzer.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -279,7 +279,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\display.h</PathWithFileName>
+      <PathWithFileName>.\head\display.h</PathWithFileName>
       <FilenameWithoutPath>display.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -291,8 +291,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\pin.h</PathWithFileName>
-      <FilenameWithoutPath>pin.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\framework.h</PathWithFileName>
+      <FilenameWithoutPath>framework.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -303,8 +303,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\keyboard.h</PathWithFileName>
-      <FilenameWithoutPath>keyboard.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\game.h</PathWithFileName>
+      <FilenameWithoutPath>game.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -315,8 +315,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\buzzer.h</PathWithFileName>
-      <FilenameWithoutPath>buzzer.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\keyboard.h</PathWithFileName>
+      <FilenameWithoutPath>keyboard.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -327,8 +327,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\random.h</PathWithFileName>
-      <FilenameWithoutPath>random.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\pin.h</PathWithFileName>
+      <FilenameWithoutPath>pin.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -339,8 +339,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\game.h</PathWithFileName>
-      <FilenameWithoutPath>game.h</FilenameWithoutPath>
+      <PathWithFileName>.\head\random.h</PathWithFileName>
+      <FilenameWithoutPath>random.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -177,7 +177,7 @@
           </Flash1>
           <bUseTDR>0</bUseTDR>
           <Flash2></Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -233,7 +233,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -324,7 +324,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\head</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -377,39 +377,39 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>framework.c</FileName>
+              <FileName>buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\framework.c</FilePath>
-            </File>
-            <File>
-              <FileName>task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\task.c</FilePath>
+              <FilePath>.\src\buzzer.c</FilePath>
             </File>
             <File>
               <FileName>display.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\display.c</FilePath>
+              <FilePath>.\src\display.c</FilePath>
             </File>
             <File>
-              <FileName>keyboard.c</FileName>
+              <FileName>framework.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\keyboard.c</FilePath>
-            </File>
-            <File>
-              <FileName>buzzer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\buzzer.c</FilePath>
-            </File>
-            <File>
-              <FileName>random.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\random.c</FilePath>
+              <FilePath>.\src\framework.c</FilePath>
             </File>
             <File>
               <FileName>game.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\game.c</FilePath>
+              <FilePath>.\src\game.c</FilePath>
+            </File>
+            <File>
+              <FileName>keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\keyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>random.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\random.c</FilePath>
+            </File>
+            <File>
+              <FileName>task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\task.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -417,39 +417,39 @@
           <GroupName>head</GroupName>
           <Files>
             <File>
-              <FileName>framework.h</FileName>
+              <FileName>buzzer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\framework.h</FilePath>
+              <FilePath>.\head\buzzer.h</FilePath>
             </File>
             <File>
               <FileName>display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\display.h</FilePath>
+              <FilePath>.\head\display.h</FilePath>
             </File>
             <File>
-              <FileName>pin.h</FileName>
+              <FileName>framework.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\pin.h</FilePath>
-            </File>
-            <File>
-              <FileName>keyboard.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\keyboard.h</FilePath>
-            </File>
-            <File>
-              <FileName>buzzer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\buzzer.h</FilePath>
-            </File>
-            <File>
-              <FileName>random.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\random.h</FilePath>
+              <FilePath>.\head\framework.h</FilePath>
             </File>
             <File>
               <FileName>game.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\game.h</FilePath>
+              <FilePath>.\head\game.h</FilePath>
+            </File>
+            <File>
+              <FileName>keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\head\keyboard.h</FilePath>
+            </File>
+            <File>
+              <FileName>pin.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\head\pin.h</FilePath>
+            </File>
+            <File>
+              <FileName>random.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\head\random.h</FilePath>
             </File>
           </Files>
         </Group>

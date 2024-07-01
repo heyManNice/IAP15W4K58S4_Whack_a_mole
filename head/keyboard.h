@@ -39,12 +39,22 @@
 //}
 #define KEY_UP(value) for(;Key_Up_Value == value;Key_Up_Value = KEY_NULL)
 
+
 //非必要情况下不需要读取以下键值
 //只需要按照上方宏定义的用法使用就好
 
 extern uchar Key_Value;
 extern uchar Key_Down_Value;
 extern uchar Key_Up_Value;
+
+//按键使用示例：
+//按下任意按键时执行一次代码
+//如果需要读取键值，请读取全局变量Key_Value
+//ANY_KEY_DOWN{
+//    需要执行的代码;
+//}
+#define ANY_KEY_DOWN for(;Key_Down_Value != KEY_NULL;Key_Down_Value = KEY_NULL)
+
 
 void Key_Scan();
 void Test_Key();

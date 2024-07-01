@@ -21,8 +21,12 @@
 #define LETTER_U         0x3E
 #define LETTER_R         0x31
 #define LETTER_N         0x37
+#define LETTER_P         0x73
+#define LETTER_L         0x38
+#define LETTER_S         0x6d
 #define DISPLAY_OFF      0x00
 #define DISPLAY_ON       0xFF
+
 
 extern uchar xdata font_table[];
 
@@ -30,5 +34,5 @@ extern uchar Display_Memory[];
 
 void Refresh_Display_Hook();
 void Display_Show(uchar d0,uchar d1,uchar d2,uchar d3,uchar d4,uchar d5,uchar d6,uchar d7);
-
+void Display_Show_Number(long int num,uchar begin,uchar bits);
 #endif

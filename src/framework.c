@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "buzzer.h"
+#include "display.h"
 
 //定义系统运行时间变量
 //系统每一次启动从0开始计数
@@ -39,7 +40,18 @@ void System_Timer_0() interrupt 1 {
     static uint i=0;
     i++;
 	Uptime_Seconds++;
-    i%2	  || (Loop_Time|=TIME_2MS);
+    //把Refresh_Display_Hook();写在这里是为了
+    //提高刷新数码管的优先权
+    //之前写在task.c里面
+    //如果其他任务过多会造成代码阻塞
+    //数码管刷新速度受到影响
+    //数码管刷新速度只要轻微降低
+    //就能让人明显感知到数码管在闪速
+    if(i%2){
+        (Loop_Time|=TIME_2MS);
+        Refresh_Display_Hook();
+    }
+    //i%2	  || (Loop_Time|=TIME_2MS);
     i%10  || (Loop_Time|=TIME_10MS);
     i%500 || (Loop_Time|=TIME_500MS);
 

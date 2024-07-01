@@ -50,3 +50,17 @@ void Display_Show(uchar d0,uchar d1,uchar d2,uchar d3,uchar d4,uchar d5,uchar d6
     Display_Memory[6] = d6;
     Display_Memory[7] = d7;
 }
+
+//数码管显示数字
+//参数：
+//num：需要显示的数字
+//begin：个位所在数码管的位置
+//bits：要显示的数字的位数
+void Display_Show_Number(long int num,uchar begin,uchar bits){
+    while (bits--)
+    {
+        Display_Memory[begin--] = NUMBER(num%10);
+        num /= 10;
+    }
+    
+}

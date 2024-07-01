@@ -8,6 +8,7 @@
 //每1秒执行一次的功能写在这个函数里
 void TIME_1S_FUNCTION(){
 	Loop_Time&=~TIME_1S;//清除这个标记，说明我们已经执行过了
+    Game_Timer_Hook();
 }
 
 
@@ -26,6 +27,7 @@ void TIME_10MS_FUNCTION(){
     //Test_Key();
     Refresh_Buzzer_Hook();
     Refresh_Game_Hook();
+    
 }
 
 
@@ -33,5 +35,8 @@ void TIME_10MS_FUNCTION(){
 //每2毫秒执行一次的功能写在这个函数里
 void TIME_2MS_FUNCTION(){
 	Loop_Time&=~TIME_2MS;//清除这个标记，说明我们已经执行过了
-    Refresh_Display_Hook();
+    //该数码管刷新函数已经
+    //移动到framework.c中
+    //详细原因请查看framework.c System_Timer_0() interrupt 1
+    //Refresh_Display_Hook();
 }

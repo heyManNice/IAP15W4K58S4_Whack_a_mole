@@ -3,8 +3,9 @@
 #include "framework.h"
 #include "keyboard.h"
 
-extern uint xdata Game_Time_Level[];
+extern unsigned long int xdata Game_Time_Level[];
 extern uint xdata Game_Score_Level[];
+
 
 
 //游戏菜单状态值
@@ -22,11 +23,24 @@ extern uint xdata Game_Score_Level[];
 #define GAME_STATE_SHOW_TOTAL_SCORE     44
 #define GAME_STATE_SHOW_TOTAL_TIME      44
 
+
+//用于在给某些固定的数组求长度
+//规定该数组的第0位手动输入数组长度
+//有效内容位从1开始
+#define LENGTH                          0
+
+void Switch_Page_Key_Event();
 void Refresh_Game_Hook();
 void Game_Menu_Run_Hook();
 void Game_Menu_Top_Hook();
 void Game_Menu_TL_Hook();
 void Game_Menu_SL_Hook();
+void Game_Timer_Hook();
+void Game_Playing_Hook();
+void Show_Mole(uchar location);
+void Hide_Mole();
+void Game_Over_Hook();
+void Show_Total_Score_Hook();
 
 //当处于菜单页面的按键映射关系
 #define KEY_ADD                         KEY_3
@@ -44,5 +58,16 @@ void Game_Menu_SL_Hook();
 #define KEY_LEVEL_SCORE                 KEY_13
 #define KEY_TOTAL_SCORE                 KEY_9
 #define KEY_TOTAL_TIME                  KEY_10
+
+
+//游戏每一个等级倒计时的时间
+#define GAME_TIMER_VALUE                10
+
+//小鼠消失状态
+#define MOLE_STATE_DISAPPEAR            1
+//小鼠准备好要出现的状态
+#define MOLE_STATE_READY                2
+//小鼠出现了！的状态
+#define MOLE_STATE_APPEAR               3
 
 #endif

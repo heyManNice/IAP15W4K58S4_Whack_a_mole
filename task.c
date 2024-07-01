@@ -2,6 +2,7 @@
 #include "display.h"
 #include "keyboard.h"
 #include "buzzer.h"
+#include "game.h"
 
 //===================1S=====================
 //每1秒执行一次的功能写在这个函数里
@@ -22,8 +23,9 @@ void TIME_500MS_FUNCTION(){
 void TIME_10MS_FUNCTION(){
 	Loop_Time&=~TIME_10MS;//清除这个标记，说明我们已经执行过了
     Key_Scan();
-    Test_Key();
+    //Test_Key();
     Refresh_Buzzer_Hook();
+    Refresh_Game_Hook();
 }
 
 

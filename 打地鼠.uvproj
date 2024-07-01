@@ -406,6 +406,11 @@
               <FileType>1</FileType>
               <FilePath>.\random.c</FilePath>
             </File>
+            <File>
+              <FileName>game.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\game.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -440,6 +445,11 @@
               <FileName>random.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\random.h</FilePath>
+            </File>
+            <File>
+              <FileName>game.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\game.h</FilePath>
             </File>
           </Files>
         </Group>

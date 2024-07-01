@@ -7,6 +7,7 @@
         "stc15.h": "c",
         "STC15.H": "cpp",
         "stdlib.h": "c",
-        "STDLIB.H": "cpp"
+        "STDLIB.H": "cpp",
+        "buzzer.h": "c"
     }
 }

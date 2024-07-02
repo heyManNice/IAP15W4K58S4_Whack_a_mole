@@ -21,7 +21,8 @@ extern uint xdata Game_Score_Level[];
 #define GAME_STATE_PAUSE                42
 #define GAME_STATE_OVER                 43
 #define GAME_STATE_SHOW_TOTAL_SCORE     44
-#define GAME_STATE_SHOW_TOTAL_TIME      44
+#define GAME_STATE_SHOW_TOTAL_TIME      45
+#define GAME_STATE_NEXT_LEVEL           46
 
 
 //用于在给某些固定的数组求长度
@@ -41,6 +42,8 @@ void Show_Mole(uchar location);
 void Hide_Mole();
 void Game_Over_Hook();
 void Show_Total_Score_Hook();
+void Next_Level_Hook();
+void Show_Total_Time_Hook();
 
 //当处于菜单页面的按键映射关系
 #define KEY_ADD                         KEY_3
@@ -61,7 +64,7 @@ void Show_Total_Score_Hook();
 
 
 //游戏每一个等级倒计时的时间
-#define GAME_TIMER_VALUE                10
+#define GAME_TIMER_VALUE                70
 
 //小鼠消失状态
 #define MOLE_STATE_DISAPPEAR            1

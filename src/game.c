@@ -22,8 +22,8 @@ uchar Key_Value_List[] = {
 //不同等级下的晋级分数线
 //等级值为1~9
 uint xdata Game_Score_Level[10] = {
-    0,20,30,80,80,
-    80,80,80,80,80
+    0,20,30,40,50,
+    60,70,80,80,9999
 };
 
 long int xdata Game_Total_Score     =   0;
@@ -37,6 +37,9 @@ uchar Game_Level = 1;
 uint Game_Socre = 0;
 //该游戏目前等级的倒计时
 uint Game_Timer = GAME_TIMER_VALUE;
+
+//分数从0数到总分的动画数值
+ uint Count_Score = 0;
 
 
 //记录游戏状态的变量
@@ -70,6 +73,12 @@ void Refresh_Game_Hook(){
         break;
     case GAME_STATE_SHOW_TOTAL_SCORE:
         Show_Total_Score_Hook();
+        break;
+    case GAME_STATE_NEXT_LEVEL:
+        Next_Level_Hook();
+        break;
+    case GAME_STATE_SHOW_TOTAL_TIME:
+        Show_Total_Time_Hook();
         break;
     default:
 
@@ -111,11 +120,10 @@ void Game_Menu_Run_Hook(){
     Display_Show(LETTER_G,LETTER_A,LETTER_N,LETTER_E,DISPLAY_OFF,LETTER_R,LETTER_U,LETTER_N);
     KEY_DOWN(KEY_OK){
         Game_Level = 1;
-        Game_Socre = 0;
         Game_Total_Score = 0;
         Game_Total_Time = 0;
-        Game_Timer = GAME_TIMER_VALUE;
-        Game_State = GAME_STATE_PLAYING;
+        //游戏跳到显示下一等级
+        Game_State = GAME_STATE_NEXT_LEVEL;
     }
 }
 //菜单 显示最好成绩的钩子函数
@@ -222,9 +230,14 @@ void Game_Menu_SL_Hook(){
 }
 
 void Game_Over_Hook(){
+    static uint count = 0;
     Display_Show(LETTER_G,LETTER_A,LETTER_N,LETTER_E,LETTER_O,LETTER_U,LETTER_E,LETTER_R);
-    ANY_KEY_DOWN{
+    if(++count == 550){
+        count = 0;
         Game_State = GAME_STATE_SHOW_TOTAL_SCORE;
+        //清除在这5秒内按键的记录
+        //防止对后面代码逻辑的影响
+        Key_Down_Value = KEY_NULL;
     }
 }
 
@@ -270,6 +283,15 @@ void Game_Playing_Hook(){
             Hide_Mole();
             count = 0;
             Mole_State = MOLE_STATE_DISAPPEAR;
+            if(Game_Socre >= Game_Score_Level[Game_Level] && Game_Level!=9){
+                //升级啦！
+                Game_Level += 1;
+                Game_State = GAME_STATE_NEXT_LEVEL;
+            }
+            //如果游戏等级是9，而且分是9999，直接结束游戏
+            if(Game_Level == 9 && Game_Socre == 9999){
+                Game_Timer = 1;
+            }
         }else{
             Buzzer_Is_Alert = 1;
         }
@@ -287,7 +309,25 @@ void Game_Timer_Hook(){
             if(Best_Total_Score < Game_Total_Score){
                 Best_Total_Score = Game_Total_Score;
             }
+            //清空计数动画数值
+            Count_Score = 0;
         }
+    }
+}
+
+void Next_Level_Hook(){
+    static uchar count = 0;
+    Display_Show(LETTER_L,LETTER_E,LETTER_U,LETTER_E,LETTER_L,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF);
+    Display_Memory[7] = NUMBER(Game_Level);
+    if(++count == 200){
+        Game_Socre = 0;
+        Game_Timer = GAME_TIMER_VALUE;
+        Game_State = GAME_STATE_PLAYING;
+        Display_Memory[4] = DISPLAY_OFF;
+        Display_Memory[5] = DISPLAY_OFF;
+        Display_Memory[6] = DISPLAY_OFF;
+        Display_Memory[7] = DISPLAY_OFF;
+        count = 0;
     }
 }
 
@@ -327,9 +367,36 @@ void Hide_Mole(){
 }
 //显示当前游戏的总得分
 void Show_Total_Score_Hook(){
+    //计时用的
+    static uint count = 0;
+
     Display_Memory[0]=LETTER_P;
     Display_Memory[1]=DISPLAY_OFF;
-    Display_Show_Number(Game_Total_Score,7,6);
+    Display_Show_Number(Count_Score,7,6);
+
+    if(Count_Score==Game_Total_Score){
+        ANY_KEY_DOWN{
+            Game_State = GAME_STATE_SHOW_TOTAL_TIME;
+        }
+        Buzzer_noBeep();
+        return;
+    }
+
+    if(count==0){
+        Buzzer_Beep();
+        Count_Score++;
+    }
+    if(count==2){
+        Buzzer_noBeep();
+    }
+    if(++count>3)count = 0;
+
+}
+
+void Show_Total_Time_Hook(){
+    Display_Memory[0]=LETTER_T;
+    Display_Memory[1]=DISPLAY_OFF;
+    Display_Show_Number(Game_Total_Time,7,6);
     ANY_KEY_DOWN{
         Game_State = GAME_STATE_MENU_RUN;
     }

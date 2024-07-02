@@ -80,6 +80,9 @@ void Refresh_Game_Hook(){
     case GAME_STATE_SHOW_TOTAL_TIME:
         Show_Total_Time_Hook();
         break;
+    case GAME_STATE_PAUSE:
+        Game_Pause_Hook();
+        break;
     default:
 
         break;
@@ -246,12 +249,23 @@ void Game_Playing_Hook(){
     static uchar Mole_State = MOLE_STATE_DISAPPEAR;
     static uchar random_location = 0;
     static uchar random_time_before_appear = 0;//小鼠出现前的随机时间,单位10ms
-
-    //显示当前等级得分
-    Display_Show_Number(Game_Socre,1,2);
-    Display_Memory[1] |= 0x80;
-    //显示当前倒计时
-    Display_Show_Number(Game_Timer,3,2);
+    static uchar Is_Show_Level_Score_Only = 0;
+    if(Is_Show_Level_Score_Only){
+        //只显示当前等级得分
+        //使用四位数字来显示得分
+        Display_Show_Number(Game_Socre,3,4);
+    }else{
+        //显示当前等级得分
+        Display_Show_Number(Game_Socre,1,2);
+        Display_Memory[1] |= 0x80;
+        //显示当前倒计时
+        Display_Show_Number(Game_Timer,3,2);
+    }
+    if(Key_Value == KEY_LEVEL_SCORE){
+        Is_Show_Level_Score_Only = 1;
+    }else{
+        Is_Show_Level_Score_Only = 0;
+    }
     switch (Mole_State)
     {
     case MOLE_STATE_DISAPPEAR:
@@ -276,6 +290,12 @@ void Game_Playing_Hook(){
         break;
     }
     ANY_KEY_DOWN{
+        if(Key_Value == KEY_PAUSE){
+            Game_State = GAME_STATE_PAUSE;
+            //直接清空当前按下的键值并退出这个函数
+            Key_Down_Value = KEY_NULL;
+            return;
+        }
         if(Key_Value == Key_Value_List[random_location]){
             Game_Socre+=1;
             Game_Total_Score+=1;
@@ -293,7 +313,7 @@ void Game_Playing_Hook(){
                 Game_Timer = 1;
             }
         }else{
-            Buzzer_Is_Alert = 1;
+            if(Key_Value!=KEY_LEVEL_SCORE)Buzzer_Is_Alert = 1;
         }
     }
 }
@@ -370,7 +390,7 @@ void Show_Total_Score_Hook(){
     //计时用的
     static uint count = 0;
 
-    Display_Memory[0]=LETTER_P;
+    Display_Memory[0]=LETTER_S;
     Display_Memory[1]=DISPLAY_OFF;
     Display_Show_Number(Count_Score,7,6);
 
@@ -393,11 +413,58 @@ void Show_Total_Score_Hook(){
 
 }
 
+//显示当前游戏消耗总时间的函数
 void Show_Total_Time_Hook(){
     Display_Memory[0]=LETTER_T;
     Display_Memory[1]=DISPLAY_OFF;
     Display_Show_Number(Game_Total_Time,7,6);
     ANY_KEY_DOWN{
         Game_State = GAME_STATE_MENU_RUN;
+    }
+}
+
+
+//游戏暂停函数
+void Game_Pause_Hook(){
+    static uchar Is_Hide_Caret = 0;
+    static count = 0;
+    if(count==0)Is_Hide_Caret=0;
+    if(count==50)Is_Hide_Caret=1;
+    if(++count == 100) count=0;
+
+    //当什么键都没按下的时候显示pause字样
+    if(Key_Value == KEY_NULL){
+        if(Is_Hide_Caret){
+            Display_Show(DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF);
+        }else{
+            Display_Show(DISPLAY_OFF,DISPLAY_OFF,DISPLAY_OFF,LETTER_P,LETTER_A,LETTER_U,LETTER_S,LETTER_E);
+        }
+    }
+    KEY_DOWN(KEY_CONTINUE){
+        Game_State = GAME_STATE_PLAYING;
+        //由于游戏循环的小鼠位置在函数内，外部无法读取
+        //懒得改，目前就只能让游戏从暂停回来的时候
+        //隐藏小鼠了，就当是暂停罚时。
+        Hide_Mole();
+    }
+    KEY_DOWN(KEY_EXIT){
+        Game_State = GAME_STATE_MENU_RUN;
+    }
+    KEY_DOWN(KEY_LEVEL_SCORE){
+        Display_Memory[0] = LETTER_L;
+        Display_Memory[1] = LETTER_S;
+        Display_Memory[2] = DISPLAY_OFF;
+        Display_Show_Number(Game_Socre,7,5);
+    }
+
+    KEY_DOWN(KEY_TOTAL_SCORE){
+        Display_Memory[0] = LETTER_S;
+        Display_Memory[1] = DISPLAY_OFF;
+        Display_Show_Number(Game_Total_Score,7,6);
+    }
+    KEY_DOWN(KEY_TOTAL_TIME){
+        Display_Memory[0] = LETTER_S;
+        Display_Memory[1] = DISPLAY_OFF;
+        Display_Show_Number(Game_Total_Time,7,6);
     }
 }

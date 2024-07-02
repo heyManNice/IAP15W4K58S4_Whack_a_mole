@@ -44,6 +44,7 @@ void Game_Over_Hook();
 void Show_Total_Score_Hook();
 void Next_Level_Hook();
 void Show_Total_Time_Hook();
+void Game_Pause_Hook();
 
 //当处于菜单页面的按键映射关系
 #define KEY_ADD                         KEY_3

@@ -463,7 +463,7 @@ void Game_Pause_Hook(){
         Display_Show_Number(Game_Total_Score,7,6);
     }
     KEY_DOWN(KEY_TOTAL_TIME){
-        Display_Memory[0] = LETTER_S;
+        Display_Memory[0] = LETTER_T;
         Display_Memory[1] = DISPLAY_OFF;
         Display_Show_Number(Game_Total_Time,7,6);
     }

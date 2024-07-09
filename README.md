@@ -8,7 +8,7 @@
 ./doc 设计报告目录
 
 # 项目编译
-使用Keil程序打开项目./打地鼠.uvproj，即可点击编译按钮编译  
+使用stc-isp程序向Keil软件中添加IAP15W4k58s4单片机头文件，然后使用Keil程序打开项目./打地鼠.uvproj，即可点击编译按钮编译  
 
 # 配套资源
 [Proteus仿真电路](https://github.com/heyManNice/IAP15W4K58S4_Whack_a_mole_Proteus8)

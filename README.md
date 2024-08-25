@@ -7,6 +7,12 @@
 ./src .c文件目录  
 ./doc 设计报告目录
 
+# 图片
+![几张关于这个项目的图片](./pic/pic1.jpg)
+
+# 视频演示
+哔哩哔哩：https://www.bilibili.com/video/BV1KE421P7kH
+
 # 项目编译
 使用stc-isp程序向Keil软件中添加IAP15W4k58s4单片机头文件，然后使用Keil程序打开项目./打地鼠.uvproj，即可点击编译按钮编译  
 
